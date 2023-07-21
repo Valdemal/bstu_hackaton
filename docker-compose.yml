@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   postgres:
+    container_name: project-postgres
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -10,6 +11,7 @@ services:
       - 5432
 
   django:
+    container_name: project-django
     build: ./backend
     command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
     volumes:
@@ -24,9 +26,10 @@ services:
       - postgres
 
   nginx:
+    container_name: project-nginx
     build: ./nginx
     ports:
-      - "80:80"
+      - "8000:8000"
     volumes:
       - static:/usr/src/static
       - media:/usr/src/media
