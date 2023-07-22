@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   postgres:
-    container_name: project-postgres
+    container_name: hackaton-postgres
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
@@ -11,7 +11,7 @@ services:
       - 5432
 
   django:
-    container_name: project-django
+    container_name: hackaton-django
     build: ./backend
     command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
     volumes:
@@ -26,7 +26,7 @@ services:
       - postgres
 
   nginx:
-    container_name: project-nginx
+    container_name: hackaton-nginx
     build: ./nginx
     ports:
       - "8000:8000"

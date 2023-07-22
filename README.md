@@ -25,4 +25,4 @@
 Для полноценной работы с приложением вам понадобится создать суперпользователя, который будет обладать всеми правами,
 для этого выполните 
 
-#### `docker exec -it project-django python manage.py createsuperuser`
+#### `docker exec -it hackaton-django python manage.py createsuperuser`
