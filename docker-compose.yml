@@ -15,7 +15,7 @@ services:
     build: ./backend
     command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend:/usr/src/backend
       - static:/usr/src/static
       - media:/usr/src/media
       - logs:/usr/src/logs
@@ -25,15 +25,23 @@ services:
     depends_on:
       - postgres
 
+  angular:
+    container_name: hackaton-angular
+    build: ./frontend
+    volumes:
+      - frontend:/usr/src/frontend
+
   nginx:
     container_name: hackaton-nginx
     build: ./nginx
     ports:
-      - "8000:8000"
+      - "80:80"
     volumes:
       - static:/usr/src/static
       - media:/usr/src/media
+      - frontend:/usr/src/frontend
     depends_on:
+      - angular
       - django
 
 volumes:
@@ -41,3 +49,4 @@ volumes:
   static:
   media:
   logs:
+  frontend:
