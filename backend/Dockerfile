@@ -21,6 +21,4 @@ RUN chmod +x /usr/src/backend/entrypoint.sh
 # copy project
 COPY . .
 
-# пока так, потому что entripoint.sh видите-ли не найден
-CMD python manage.py migrate
-#ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["sh", "entrypoint.sh"]
