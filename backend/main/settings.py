@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
-    'drf_yasg',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
 
     # Внутренние приложения
 ]
@@ -140,7 +141,18 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # corsheaders
 CORS_ORIGIN_ALLOW_ALL = True
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Hackaton API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    'COMPONENT_SPLIT_REQUEST': True,
+}
