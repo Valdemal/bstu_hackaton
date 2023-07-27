@@ -156,3 +156,10 @@ SPECTACULAR_SETTINGS = {
     'REDOC_DIST': 'SIDECAR',
     'COMPONENT_SPLIT_REQUEST': True,
 }
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user': 'main.serializers.UserSerializer',
+        'current_user': 'main.serializers.UserSerializer',
+    }
+}
