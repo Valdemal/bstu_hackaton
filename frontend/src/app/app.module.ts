@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { UsersService } from './shared/services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './shared/services/auth.service';
-import { LayoutComponent } from './components/ui/layout/layout.component';
-import { HeadersComponent } from './components/ui/headers/headers.component';
-import { LoginComponent } from './components/ui/login/login.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './components/ui/register/register.component';
-import { ContantComponent } from './components/ui/contant/contant.component';
+
+import { ContantComponent } from './components/ui/students/contant/contant.component';
 import { CreateTestComponent } from './components/ui/teacher/create-test/create-test.component';
 import { TestsComponent } from './components/ui/students/tests/tests.component';
+import { LayoutComponent } from './components/ui/students/layout/layout.component';
+import { HeadersComponent } from './components/ui/students/headers/headers.component';
+import { LoginComponent } from './components/ui/students/login/login.component';
+import { RegisterComponent } from './components/ui/students/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,6 @@ import { TestsComponent } from './components/ui/students/tests/tests.component';
     ReactiveFormsModule,
   ],
   providers: [UsersService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

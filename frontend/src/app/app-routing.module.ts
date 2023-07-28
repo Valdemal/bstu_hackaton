@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/ui/login/login.component';
-import { RegisterComponent } from './components/ui/register/register.component';
-import { ContantComponent } from './components/ui/contant/contant.component';
+import { ContantComponent } from './components/ui/students/contant/contant.component';
 import { CreateTestComponent } from './components/ui/teacher/create-test/create-test.component';
 import { TestsComponent } from './components/ui/students/tests/tests.component';
+import { LoginComponent } from './components/ui/students/login/login.component';
+import { RegisterComponent } from './components/ui/students/register/register.component';
 
 const routeStudents: Routes = [
   { path: '',                   redirectTo: 'login', pathMatch: 'full' },
