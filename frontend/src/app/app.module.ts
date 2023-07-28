@@ -16,6 +16,8 @@ import { LayoutComponent } from './components/ui/students/layout/layout.componen
 import { HeadersComponent } from './components/ui/students/headers/headers.component';
 import { LoginComponent } from './components/ui/students/login/login.component';
 import { RegisterComponent } from './components/ui/students/register/register.component';
+import { HeaderComponent } from './components/ui/teacher/header/header.component';
+import { DashboardOfTestsTopicsComponent } from './components/ui/students/dashboard-of-tests-topics/dashboard-of-tests-topics.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { RegisterComponent } from './components/ui/students/register/register.co
     ContantComponent,
     CreateTestComponent,
     TestsComponent,
+    HeaderComponent,
+    DashboardOfTestsTopicsComponent,
   ],
   imports: [
     BrowserModule,

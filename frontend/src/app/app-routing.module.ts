@@ -5,6 +5,7 @@ import { CreateTestComponent } from './components/ui/teacher/create-test/create-
 import { TestsComponent } from './components/ui/students/tests/tests.component';
 import { LoginComponent } from './components/ui/students/login/login.component';
 import { RegisterComponent } from './components/ui/students/register/register.component';
+import { DashboardOfTestsTopicsComponent } from './components/ui/students/dashboard-of-tests-topics/dashboard-of-tests-topics.component';
 
 const routeStudents: Routes = [
   { path: '',                   redirectTo: 'login', pathMatch: 'full' },
@@ -13,13 +14,8 @@ const routeStudents: Routes = [
   { path: 'app',                component: ContantComponent },
   { path: 'create_tests',       component: CreateTestComponent },
   { path: 'test',               component: TestsComponent },
+  { path: 'dashboard',          component: DashboardOfTestsTopicsComponent },
 ];
-
-// const routeTeacher: Routes = [
-//   { path: '',         redirectTo: 'create_tests', pathMatch: 'full' },
-//   { path: 'create_tests',    component: CreateTestComponent},
-
-// ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routeStudents)],
