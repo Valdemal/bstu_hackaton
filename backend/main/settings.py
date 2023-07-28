@@ -162,8 +162,8 @@ SPECTACULAR_SETTINGS = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user': 'main.serializers.UserSerializer',
-        'current_user': 'main.serializers.UserSerializer',
+        'user': 'user_app.serializers.UserSerializer',
+        'current_user': 'user_app.serializers.UserSerializer',
     }
 }
 
