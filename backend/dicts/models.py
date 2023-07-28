@@ -1,17 +1,13 @@
 from django.db import models
 
 
-class EduLevelChoices(models.IntegerChoices):
-    BACHELOR = 1, 'Бакалавриат'
-    SPECIALIST = 2, 'Специалитет'
-    MASTER = 3, 'Магистратура'
+class EducationLevel(models.TextChoices):
+    BACHELOR = 'Бакалавриат'
+    SPECIALIST = 'Специалитет'
+    MASTER = 'Магистратура'
 
 
-class DictUgsn(models.Model):
-    """
-    Справочник укрупённых груп
-    """
-
+class Ugsn(models.Model):
     code = models.CharField("Код", max_length=20)
     models.CharField("Наименование", max_length=255)
 
@@ -20,53 +16,52 @@ class DictUgsn(models.Model):
         verbose_name_plural = 'Укрупнённые группы специальностей и направлений'
 
 
-class DictSpec(models.Model):
-    """
-    Справочник специальностей
-    """
-
+class Speciality(models.Model):
     name = models.CharField("Наименование", max_length=500)
-    code = models.CharField("Код", max_length=20)
-    old_code = models.CharField("Старый код", max_length=20, blank=True)
-    level = models.PositiveIntegerField('ID', choices=EduLevelChoices.choices)
-    ugsn = models.ForeignKey(DictUgsn, on_delete=models.CASCADE)
+    code = models.CharField("Код", max_length=20, unique=True)
+    level = models.CharField("Уровень образования", max_length=20, choices=EducationLevel.choices)
+    ugsn = models.ForeignKey(Ugsn, on_delete=models.CASCADE, verbose_name='УГСН')
 
     class Meta:
         verbose_name = 'Направление подготовки (специальность)'
         verbose_name_plural = 'Справочник направлений подготовки'
 
 
-class DictCompetence(models.Model):
-    """
-    Справочник компетенций
-    """
-    name = models.CharField("Наименование", max_length=255)
-    category_name = models.CharField("Наименование категории", max_length=255)
+class Competence(models.Model):
+    name = models.CharField("Наименование", max_length=255, unique=True)
+    category_name = models.CharField("Наименование категории", max_length=255, unique=True)
     code = models.CharField('Код', max_length=50)
 
+    class Meta:
+        verbose_name = "Компетенция"
+        verbose_name_plural = "Компетенции"
 
-class DictIndicator(models.Model):
-    """
-    Справочник индикаторов
-    """
+
+class Indicator(models.Model):
     name = models.CharField("Наименование", max_length=255)
     code = models.CharField('Код', max_length=50)
-    competence = models.ForeignKey(DictCompetence, on_delete=models.CASCADE)
+    competence = models.ForeignKey(Competence, on_delete=models.CASCADE, verbose_name="Компетенция")
+
+    class Meta:
+        verbose_name = "Индикатор"
+        verbose_name_plural = "Индикаторы"
+        unique_together = ('code', 'competence'),
 
 
-class DictSubject(models.Model):
-    """
-    Справочник дисциплин
-    """
-    name = models.CharField("Наименование", max_length=500)
-    competences = models.ManyToManyField(DictCompetence, related_name="subjects")
+class Subject(models.Model):
+    name = models.CharField("Наименование", max_length=500, unique=True)
+    competences = models.ManyToManyField(Competence, related_name="subjects", verbose_name="Компетенции")
+
+    class Meta:
+        verbose_name = "Дисциплина"
+        verbose_name_plural = "Дисциплины"
 
 
-class DictEduProgram(models.Model):
-    """
-    Справочник образовательных програм
-    """
+class EducationProgram(models.Model):
+    name = models.CharField("Наименование", max_length=255, unique=True)
+    speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT, verbose_name="Направление подготовки")
+    subjects = models.ManyToManyField(Subject, verbose_name="Дисциплины")
 
-    name = models.CharField("Наименование", max_length=255)
-    spec = models.ForeignKey(DictSpec, on_delete=models.SET_NULL)
-    subjects = models.ManyToManyField(DictSubject)
+    class Meta:
+        verbose_name = 'Образовательная программа'
+        verbose_name_plural = 'Образовательные программы'

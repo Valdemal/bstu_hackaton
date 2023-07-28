@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+for model in [
+    Ugsn, Speciality, Competence, Indicator, Subject, EducationProgram
+]:
+    admin.site.register(model)
