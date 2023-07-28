@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Внутренние приложения
     'dicts',
     'initers',
+    'user_app',
 ]
 
 MIDDLEWARE = [
@@ -165,3 +166,5 @@ DJOSER = {
         'current_user': 'main.serializers.UserSerializer',
     }
 }
+
+AUTH_USER_MODEL = 'user_app.User'
