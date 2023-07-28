@@ -3,16 +3,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
-from dicts.views import *
+
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'specialities',SpecialityViewSet,'specialities')
-router.register(r'ugsns',UgsnViewSet,'ugsns')
-router.register(r'compentences',CompetenceViewSet,'competences')
-router.register(r'indicators',IndicatorViewSet,'indicators')
-router.register(r'subjects',SubjectViewSet,'subjects')
-router.register(r'education-programs',EducationProgramViewSet,'education-programs')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
