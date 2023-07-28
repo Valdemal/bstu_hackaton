@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'drf_spectacular_sidecar',
 
     # Внутренние приложения
-    'dicts'
+    'dicts',
+    'initers',
 ]
 
 MIDDLEWARE = [
