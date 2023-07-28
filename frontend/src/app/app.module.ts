@@ -12,6 +12,8 @@ import { LoginComponent } from './components/ui/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/ui/register/register.component';
 import { ContantComponent } from './components/ui/contant/contant.component';
+import { CreateTestComponent } from './components/ui/teacher/create-test/create-test.component';
+import { TestsComponent } from './components/ui/students/tests/tests.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ContantComponent } from './components/ui/contant/contant.component';
     LoginComponent,
     RegisterComponent,
     ContantComponent,
+    CreateTestComponent,
+    TestsComponent,
   ],
   imports: [
     BrowserModule,
