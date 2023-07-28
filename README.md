@@ -23,6 +23,16 @@
 ### Создание суперпользователя
 
 Для полноценной работы с приложением вам понадобится создать суперпользователя, который будет обладать всеми правами,
-для этого выполните 
+для этого выполните:
 
 #### `docker exec -it hackaton-django python manage.py createsuperuser`
+
+## Инициализация данных
+
+Чтобы заполнить БД тестовыми данными, выполните команду:
+
+#### `docker exec -it hackaton-django python manage.py init_db`
+
+Чтобы очистить БД, выполните:
+
+#### `docker exec -it hackaton-django python manage.py flush --no-input`

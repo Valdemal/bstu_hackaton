@@ -8,8 +8,8 @@ class EducationLevel(models.TextChoices):
 
 
 class Ugsn(models.Model):
+    name = models.CharField("Наименование", max_length=255)
     code = models.CharField("Код", max_length=20)
-    models.CharField("Наименование", max_length=255)
 
     class Meta:
         verbose_name = 'Укрупнённая группа специальности / направления'
@@ -18,7 +18,7 @@ class Ugsn(models.Model):
 
 class Speciality(models.Model):
     name = models.CharField("Наименование", max_length=500)
-    code = models.CharField("Код", max_length=20, unique=True)
+    code = models.CharField("Код", max_length=20)
     level = models.CharField("Уровень образования", max_length=20, choices=EducationLevel.choices)
     ugsn = models.ForeignKey(Ugsn, on_delete=models.CASCADE, verbose_name='УГСН')
 
@@ -28,13 +28,14 @@ class Speciality(models.Model):
 
 
 class Competence(models.Model):
-    name = models.CharField("Наименование", max_length=255, unique=True)
-    category_name = models.CharField("Наименование категории", max_length=255, unique=True)
+    name = models.CharField("Наименование", max_length=255)
+    category_name = models.CharField("Наименование категории", max_length=255)
     code = models.CharField('Код', max_length=50)
 
     class Meta:
         verbose_name = "Компетенция"
         verbose_name_plural = "Компетенции"
+        unique_together = ('name', 'code'),
 
 
 class Indicator(models.Model):
@@ -58,10 +59,11 @@ class Subject(models.Model):
 
 
 class EducationProgram(models.Model):
-    name = models.CharField("Наименование", max_length=255, unique=True)
+    name = models.CharField("Наименование", max_length=255)
     speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT, verbose_name="Направление подготовки")
     subjects = models.ManyToManyField(Subject, verbose_name="Дисциплины")
 
     class Meta:
         verbose_name = 'Образовательная программа'
         verbose_name_plural = 'Образовательные программы'
+        unique_together = ('name', 'speciality'),
