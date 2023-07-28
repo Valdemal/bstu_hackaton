@@ -7,12 +7,12 @@ from dicts.views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'specialities',SpecialityViewSet,'specialities')
-router.register(r'ugsns',UgsnViewSet,'ugsns')
-router.register(r'compentences',CompetenceViewSet,'competences')
-router.register(r'indicators',IndicatorViewSet,'indicators')
-router.register(r'subjects',SubjectViewSet,'subjects')
-router.register(r'education-programs',EducationProgramViewSet,'education-programs')
+router.register(r'specialities', SpecialityViewSet, 'specialities')
+router.register(r'ugsns', UgsnViewSet, 'ugsns')
+router.register(r'competences', CompetenceViewSet, 'competences')
+router.register(r'indicators', IndicatorViewSet, 'indicators')
+router.register(r'subjects', SubjectViewSet, 'subjects')
+router.register(r'education-programs', EducationProgramViewSet, 'education-programs')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
