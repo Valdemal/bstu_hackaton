@@ -16,8 +16,10 @@ import { LayoutComponent } from './components/ui/students/layout/layout.componen
 import { HeadersComponent } from './components/ui/students/headers/headers.component';
 import { LoginComponent } from './components/ui/students/login/login.component';
 import { RegisterComponent } from './components/ui/students/register/register.component';
-import { HeaderComponent } from './components/ui/teacher/header/header.component';
 import { DashboardOfTestsTopicsComponent } from './components/ui/students/dashboard-of-tests-topics/dashboard-of-tests-topics.component';
+import { HeaderDuringTestsComponent } from './components/ui/students/header-during-tests/header-during-tests.component';
+import { AboutComponent } from './components/ui/students/about/about.component';
+import { CreatingQuestionsComponent } from './components/ui/teacher/creating-questions/creating-questions.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { DashboardOfTestsTopicsComponent } from './components/ui/students/dashbo
     ContantComponent,
     CreateTestComponent,
     TestsComponent,
-    HeaderComponent,
     DashboardOfTestsTopicsComponent,
+    HeaderDuringTestsComponent,
+    AboutComponent,
+    CreatingQuestionsComponent,
   ],
   imports: [
     BrowserModule,

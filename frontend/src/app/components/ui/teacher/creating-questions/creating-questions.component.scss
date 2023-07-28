@@ -54,33 +54,38 @@ $basicFontSizeTitle: 20px;
   margin-bottom: 20px;
 }
 
+
 .block_btn {
-  button {
-    font-family: "Vollkorn", serif;
-    letter-spacing: 1px;
-    font-size: $basicFontSize;
-    font-weight: 600;
-    width: 100%;
-    height: 40px;
-    border: none;
-    color: $colorText;
-    background-color: $baseColorForTheButton;
-    border-radius: 5px;
-    color: $theBaseColorOfTheTemplate;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
-    transition: transform 0.5s;
-    text-decoration: none;
+    button {
+      font-family: "Vollkorn", serif;
+      letter-spacing: 1px;
+      font-size: $basicFontSize;
+      font-weight: 600;
+      width: 100%;
+      height: 40px;
+      border: none;
+      color: $colorText;
+      background-color: $baseColorForTheButton;
+      border-radius: 5px;
+      color: $theBaseColorOfTheTemplate;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
+      transition: transform 0.5s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    margin: 0px 50px 30px 50px;
   }
-  button:hover {
-    transform: scale(1.05);
-  }
-  margin: 0px 50px 30px 50px;
-}
-.btn {
-  a {
-    text-decoration: none;
-  }
+
+.number_question {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
 }
 
 .question {
@@ -114,6 +119,15 @@ $basicFontSizeTitle: 20px;
 .comment_in_card {
   padding: 0px 0px 20px 0px;
   font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.link {
+  padding-left: 50px;
+  padding-top: 10px;
+  font-size: $basicFontSize;
   font-weight: 600;
   color: $colorText;
   letter-spacing: 1px;

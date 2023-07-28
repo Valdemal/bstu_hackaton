@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./headers.component.scss']
 })
 export class HeadersComponent {
-
+  public message: string = "Войти"; 
+  
 }
