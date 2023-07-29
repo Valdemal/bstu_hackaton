@@ -4,7 +4,7 @@ from typing import Sequence
 import openpyxl
 from django.conf import settings
 
-from dicts.models import Subject, EducationProgram, Speciality, Ugsn, Competence, Indicator
+from dicts.models import Subject, EducationProgram, Speciality, Ugsn, Competence, Indicator, EducationLevel
 from initers.base import Initer, IniterComposite
 
 
@@ -16,7 +16,7 @@ class ExcelSampleIniter(Initer, ABC):
 
     @classmethod
     @abstractmethod
-    def _init_from_row(cls, row: tuple):
+    def _init_from_row(cls, row: tuple, *args, **kwargs):
         pass
 
     @classmethod
@@ -25,10 +25,10 @@ class ExcelSampleIniter(Initer, ABC):
             cls._init_from_file(filename)
 
     @classmethod
-    def _init_from_file(cls, filename):
+    def _init_from_file(cls, filename, *args, **kwargs):
         ws = cls._get_active_worksheet(filename)
-        for row in ws.iter_rows(values_only=True, min_row=2, max_col=6):
-            cls._init_from_row(row)
+        for row in ws.iter_rows(values_only=True, min_row=2, max_col=cls.column_count):
+            cls._init_from_row(row, *args, **kwargs)
 
     @classmethod
     def _get_active_worksheet(cls, filename: str):
@@ -42,7 +42,7 @@ class SubjectIniter(ExcelSampleIniter):
     column_count = 1
 
     @classmethod
-    def _init_from_row(cls, row: tuple):
+    def _init_from_row(cls, row: tuple, *args, **kwargs):
         Subject.objects.get_or_create(name=row[0])
 
 
@@ -51,7 +51,7 @@ class EducationProgramsAndSpecialitiesIniter(ExcelSampleIniter):
     column_count = 6
 
     @classmethod
-    def _init_from_row(cls, row: tuple):
+    def _init_from_row(cls, row: tuple, *args, **kwargs):
         ugsn = Ugsn.objects.get_or_create(name=row[2], code=row[1])[0]
         speciality = Speciality.objects.get_or_create(name=row[4], code=row[3], level=row[0].title(), ugsn=ugsn)[0]
 
@@ -63,16 +63,22 @@ class CompetencesAndIndicatorsIniter(ExcelSampleIniter):
     column_count = 5
 
     @classmethod
-    def _init_from_row(cls, row: tuple):
-        competence = Competence.objects.filter(code=row[1])
+    def _init_from_row(cls, row: tuple, *args, **kwargs):
+        competence = Competence.objects.filter(name=row[0], code=row[1], level=kwargs['level'])
+
         if competence.exists():
             competence = competence.first()
         else:
-            competence = Competence.objects.create(name=row[0], code=row[1], category_name=row[2])
+            competence = Competence.objects.create(
+                name=row[0], code=row[1], category_name=row[2], level=kwargs['level'])
 
-        is_already_exists = Indicator.objects.filter(code=row[3]).exists()
-        if not is_already_exists:
-            Indicator.objects.get_or_create(name=row[4], code=row[3], competence=competence)
+        Indicator.objects.create(name=row[4], code=row[3], competence=competence)
+
+    @classmethod
+    def start(cls):
+        cls._init_from_file('УК_бакалавриат.xlsx', level=EducationLevel.BACHELOR)
+        cls._init_from_file('УК_магистратура.xlsx', level=EducationLevel.MASTER)
+        cls._init_from_file('УК_специалитет.xlsx', level=EducationLevel.SPECIALIST)
 
 
 class MainIniter(IniterComposite):

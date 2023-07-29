@@ -37,6 +37,7 @@ class Competence(models.Model):
     name = models.CharField("Наименование", max_length=255)
     category_name = models.CharField("Наименование категории", max_length=255)
     code = models.CharField('Код', max_length=50)
+    level = models.CharField("Уровень образования", max_length=20, choices=EducationLevel.choices)
 
     def __str__(self):
         return f"{self.code} {self.name}"
@@ -44,11 +45,11 @@ class Competence(models.Model):
     class Meta:
         verbose_name = "Компетенция"
         verbose_name_plural = "Компетенции"
-        unique_together = ('name', 'code'),
+        unique_together = ('name', 'code', 'level'),
 
 
 class Indicator(models.Model):
-    name = models.CharField("Наименование", max_length=255)
+    name = models.CharField("Наименование", max_length=700)
     code = models.CharField('Код', max_length=50)
     competence = models.ForeignKey(Competence, on_delete=models.CASCADE, verbose_name="Компетенция")
 
