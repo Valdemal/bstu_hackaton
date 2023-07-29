@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './shared/services/users.service';
-import { AuthService } from './shared/services/auth.service';
-import { User } from './shared/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-contant',
+  templateUrl: './contant.component.html',
+  styleUrls: ['./contant.component.scss']
 })
-export class AppComponent implements OnInit{
+export class ContantComponent implements OnInit{
   title = 'services';
 
   columns = ['Id', 'Email', 'Username', 'Password'];
