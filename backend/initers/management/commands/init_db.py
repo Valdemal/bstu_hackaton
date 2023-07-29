@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 
-from initers.components import user
+from initers.components import user_app as user
 from initers.main import MainIniter
 
 
