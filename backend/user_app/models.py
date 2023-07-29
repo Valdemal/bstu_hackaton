@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 
 from dicts.models import EducationProgram, Subject
 
@@ -65,3 +67,27 @@ class GroupSubject(models.Model):
         verbose_name_plural = "Предметы, изучаемые группами"
 
 
+@receiver(post_save, sender=Student)
+def tag_user_as_student(sender, instance: Student, created, **kwargs):
+    if created:
+        instance.user.is_student = True
+        instance.user.save()
+
+
+@receiver(post_save, sender=Teacher)
+def tad_user_as_teacher(sender, instance: Teacher, created, **kwargs):
+    if created:
+        instance.user.is_teacher = True
+        instance.user.save()
+
+
+@receiver(post_delete, sender=Student)
+def untag_user_as_student(sender, instance: Student, using, **kwargs):
+    instance.user.is_student = False
+    instance.user.save()
+
+
+@receiver(post_delete, sender=Teacher)
+def untag_user_as_teacher(sender, instance: Teacher, using, **kwargs):
+    instance.user.is_teacher = False
+    instance.user.save()
