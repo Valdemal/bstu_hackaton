@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 from dicts.views import *
+from user_app.views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
@@ -13,6 +14,10 @@ router.register(r'competences', CompetenceViewSet, 'competences')
 router.register(r'indicators', IndicatorViewSet, 'indicators')
 router.register(r'subjects', SubjectViewSet, 'subjects')
 router.register(r'education-programs', EducationProgramViewSet, 'education-programs')
+router.register(r'groups', GroupViewSet, 'groups')
+router.register(r'students', StudentViewSet, 'students')
+router.register(r'teachers', TeacherViewSet, 'teachers')
+router.register(r'group-subjects', GroupSubjectViewSet, 'group-subjects')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
