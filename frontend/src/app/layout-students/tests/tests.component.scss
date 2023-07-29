@@ -1,0 +1,82 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$colorError: #ff0000;
+$colorText: #036;
+$basicFontSize: 16px;
+$basicFontSizeTitle: 20px;
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  background-color: $theBaseColorOfTheTemplate;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.block {
+  input {
+    font-family: "Vollkorn", serif;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: $colorText;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+  }
+  input:hover {
+    transform: scale(1.05);
+  }
+  margin: 0px 50px 0px 50px;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.block_btn {
+  display: flex;
+  justify-content: space-between;
+  button {
+    font-family: "Vollkorn", serif;
+    letter-spacing: 1px;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: $colorText;
+    border-radius: 5px;
+    color: $theBaseColorOfTheTemplate;
+    cursor: pointer;
+    transition: transform 0.5s;
+    margin: 0px 50px 30px 50px;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+}
+
+.answer {
+  background-color: $baseColorForTheButton;
+  box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
+}
+
+.miss {
+  background-color: $colorError;
+  box-shadow: 0 2px 4px rgba($color: $colorError, $alpha: 0.2);
+}

@@ -1,0 +1,134 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$colorError: #ff0000;
+$colorText: #036;
+$basicFontSize: 16px;
+$basicFontSizeTitle: 20px;
+.form_group {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: $theBaseColorOfTheTemplate;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.block {
+  textarea {
+    font-family: "Vollkorn", serif;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: $colorText;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+  }
+  textarea:hover {
+    transform: scale(1.05);
+  }
+  input {
+    font-family: "Vollkorn", serif;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: $colorText;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+  }
+  input:hover {
+    transform: scale(1.05);
+  }
+  margin: 0px 50px 0px 50px;
+  margin-bottom: 20px;
+}
+
+
+.block_btn {
+    button {
+      font-family: "Vollkorn", serif;
+      letter-spacing: 1px;
+      font-size: $basicFontSize;
+      font-weight: 600;
+      width: 100%;
+      height: 40px;
+      border: none;
+      color: $colorText;
+      background-color: $baseColorForTheButton;
+      border-radius: 5px;
+      color: $theBaseColorOfTheTemplate;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
+      transition: transform 0.5s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    margin: 0px 50px 30px 50px;
+  }
+
+.number_question {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.question {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.right_answer {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.title_in_card {
+  padding: 20px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.comment_in_card {
+  padding: 0px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.link {
+  padding-left: 50px;
+  padding-top: 10px;
+  font-size: $basicFontSize;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,19 @@
+<div class="form_group">
+    <label class="login_text">Зарегестрироваться</label>
+    <div class="block">
+        <input type="text" class="form_control" id="username" [(ngModel)]="username" placeholder="Имя">
+    </div>
+    <div class="block">
+        <input type="email" class="form_control" id="email" [(ngModel)]="email" placeholder="Почта">
+    </div>
+    <div class="block">
+        <input type="password" class="form_control" id="password" [(ngModel)]="password" placeholder="Пароль">
+    </div>
+    <div class="message">
+        <span [className]="isFlagMessageError ? 'Successfully' : 'Error'">{{message}}</span>
+    </div>
+    <div class="block_btn">
+        <button type="submit" class="btn" (click)="onSubmit();">Отправить</button>
+    </div>
+    <a class="link_register" routerLink="/login">Уже зарегестрированы?</a>
+</div>
