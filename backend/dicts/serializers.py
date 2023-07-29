@@ -20,13 +20,13 @@ class CompetenceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class IndicatorSeralizer(serializers.ModelSerializer):
+class IndicatorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Indicator
         fields = '__all__'
 
 
-class SubjectSeralizer(serializers.ModelSerializer):
+class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = '__all__'

@@ -20,12 +20,12 @@ class CompetenceViewSet(ModelViewSet):
 
 class IndicatorViewSet(ModelViewSet):
     queryset = Indicator.objects.all()
-    serializer_class = CompetenceSerializer
+    serializer_class = IndicatorSerializer
 
 
 class SubjectViewSet(ModelViewSet):
     queryset = Subject.objects.all()
-    serializer_class = CompetenceSerializer
+    serializer_class = SubjectSerializer
 
 
 class EducationProgramViewSet(ModelViewSet):
