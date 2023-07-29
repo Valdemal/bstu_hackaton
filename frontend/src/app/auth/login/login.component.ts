@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +9,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent {
   public username: string = '';
   public password: string = '';
-  public isFlagMessageError: boolean = false;
+  
   public message: string = '';
 
+  public isFlagMessageError: boolean = false;
+
   constructor(
-    private userService: AuthService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   validationOfFields(username: string, password: string): void {
@@ -36,7 +37,7 @@ export class LoginComponent {
   onSubmit(): void {
     this.validationOfFields(this.username, this.password);
     if (this.isFlagMessageError === true) {
-      this.userService.authorize(this.username, this.password).subscribe({
+      this.authService.authorize(this.username, this.password).subscribe({
         next: (resp) => {
           this.authService.setToken(resp);
         },

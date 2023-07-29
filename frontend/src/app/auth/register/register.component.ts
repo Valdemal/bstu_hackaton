@@ -1,6 +1,7 @@
-import { UsersService } from 'src/app/shared/services/users.service';
-import { User } from 'src/app/shared/models/user.model';
 import { Component } from '@angular/core';
+import { UsersService } from '../../shared/services/users.service';
+import { User } from '../../shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,10 @@ export class RegisterComponent {
   public isFlagMessageError: boolean = false;
   private user: User = {};
 
-  constructor(private userService: UsersService) {}
+  constructor(
+    private userService: UsersService,
+    private router: Router
+  ) {}
 
   validationOfDataFromTheMailField(email: string): boolean {
     let regular = new RegExp(
@@ -59,7 +63,10 @@ export class RegisterComponent {
     if (this.isFlagMessageError === true) {
       this.setDataUser(this.username, this.password, this.email);
       this.userService.createUser(this.user).subscribe({
-        next: (user) => (this.user = user),
+        next: (user) => {
+          this.user = user;
+          setTimeout(() => this.router.navigate(['/auth/login']), 2300);
+        },
         error: (err) => console.log('Error: ', err),
       });
     }
