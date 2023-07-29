@@ -19,10 +19,6 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RelatedStudentSerializers(serializers.PrimaryKeyRelatedField, StudentSerializer):
-    pass
-
-
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
