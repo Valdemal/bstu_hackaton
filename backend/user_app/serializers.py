@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Group
         fields = '__all__'
 
 class StudentSerializer(serializers.ModelSerializer):
