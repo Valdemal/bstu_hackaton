@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import User, Student, Teacher, Group, GroupSubject
+
+for model in [
+    Student, Teacher, Group, GroupSubject, User
+]:
+    admin.site.register(model)
