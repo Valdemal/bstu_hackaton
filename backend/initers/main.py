@@ -1,11 +1,11 @@
 from django.db import transaction
 
 from .base import IniterComposite
-from .components import user, dicts
+from .components import user_app, dicts
 
 
 class MainIniter(IniterComposite):
-    initers = user.MainIniter, dicts.MainIniter
+    initers = dicts.MainIniter, user_app.MainIniter
 
     @classmethod
     def start(cls):

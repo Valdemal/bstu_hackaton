@@ -1,0 +1,95 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$colorError: #ff0000;
+$colorText: #036;
+$basicFontSize: 16px;
+$basicFontSizeTitle: 20px;
+
+.form_group {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: $theBaseColorOfTheTemplate;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.block {
+  input {
+    font-family: "Vollkorn", serif;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: $colorText;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+  }
+  input:hover {
+    transform: scale(1.05);
+  }
+  margin: 0px 50px 0px 50px;
+  margin-bottom: 20px;
+}
+
+.block_btn {
+  button {
+    font-family: "Vollkorn", serif;
+    letter-spacing: 1px;
+    font-size: $basicFontSize;
+    font-weight: 600;
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: $colorText;
+    background-color: $baseColorForTheButton;
+    border-radius: 5px;
+    color: $theBaseColorOfTheTemplate;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
+    transition: transform 0.5s;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+  margin: 0px 50px 10px 50px;
+}
+
+.login_text {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0px 20px 0px;
+  font-size: $basicFontSizeTitle;
+  font-weight: 600;
+  color: $colorText;
+  letter-spacing: 1px;
+}
+
+.message {
+  margin-left: 50px;
+  margin-bottom: 10px;
+  font-size: $basicFontSize;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.Error {
+  color: $colorError;
+}
+
+.Successfully {
+  color: #6c6;
+}
+
+.link_register {
+  font-size: $basicFontSize;
+  font-weight: 600;
+  color: $colorText;
+  margin: 0px 50px 30px 50px;
+}
