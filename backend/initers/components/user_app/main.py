@@ -30,11 +30,11 @@ class GroupSubjectIniter(Initer):
     @classmethod
     def start(cls):
         teachers = Teacher.objects.all()
-        subjects = Subject.objects.all()
 
         for group_args in GroupIniter.fixtures:
             group = Group.objects.get(name=group_args[0])
-            group_subjects = random.choices(subjects, k=random.randint(3, 5))
+            available_subjects = list(group.education_program.subjects.all())
+            group_subjects = random.sample(available_subjects, random.randint(3, 6))
 
             for group_subject in group_subjects:
                 group_teacher = random.choice(teachers)
