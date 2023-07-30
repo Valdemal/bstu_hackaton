@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dicts',
     'initers',
     'user_app',
+    'testing',
 ]
 
 MIDDLEWARE = [
