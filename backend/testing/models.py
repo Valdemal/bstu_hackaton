@@ -1,7 +1,7 @@
 from django.db import models
 
-from bstu_hackaton.backend.dicts.models import Subject, Indicator
-from bstu_hackaton.backend.user_app.models import Teacher, Student
+from dicts.models import Subject, Indicator
+from user_app.models import Teacher, Student
 
 
 class Test(models.Model):
