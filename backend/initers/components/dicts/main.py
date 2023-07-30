@@ -1,3 +1,4 @@
+import random
 from abc import ABC, abstractmethod
 from typing import Sequence
 
@@ -41,21 +42,39 @@ class SubjectIniter(ExcelSampleIniter):
     files = 'Дисциплины.xlsx',
     column_count = 1
 
+    competences = None
+
+    @classmethod
+    def start(cls):
+        cls.competences = list(Competence.objects.all())
+        super().start()
+
     @classmethod
     def _init_from_row(cls, row: tuple, *args, **kwargs):
-        Subject.objects.get_or_create(name=row[0])
+        subject = Subject.objects.get_or_create(name=row[0])[0]
+        for competence in random.sample(cls.competences, k=random.randint(1, 3)):
+            subject.competences.add(competence)
 
 
 class EducationProgramsAndSpecialitiesIniter(ExcelSampleIniter):
     files = 'Справочник_бакалавриат.xlsx', 'Справочник_магистратура.xlsx', 'Справочник_специалитет.xlsx'
     column_count = 6
 
+    subjects = None
+
+    @classmethod
+    def start(cls):
+        cls.subjects = list(Subject.objects.all())
+        super().start()
+
     @classmethod
     def _init_from_row(cls, row: tuple, *args, **kwargs):
         ugsn = Ugsn.objects.get_or_create(name=row[2], code=row[1])[0]
         speciality = Speciality.objects.get_or_create(name=row[4], code=row[3], level=row[0].title(), ugsn=ugsn)[0]
+        program = EducationProgram.objects.create(name=row[5], speciality=speciality)
 
-        EducationProgram.objects.create(name=row[5], speciality=speciality)
+        for subject in random.sample(cls.subjects, k=10):
+            program.subjects.add(subject)
 
 
 class CompetencesAndIndicatorsIniter(ExcelSampleIniter):
@@ -82,4 +101,4 @@ class CompetencesAndIndicatorsIniter(ExcelSampleIniter):
 
 
 class MainIniter(IniterComposite):
-    initers = SubjectIniter, EducationProgramsAndSpecialitiesIniter, CompetencesAndIndicatorsIniter
+    initers = CompetencesAndIndicatorsIniter, SubjectIniter, EducationProgramsAndSpecialitiesIniter
