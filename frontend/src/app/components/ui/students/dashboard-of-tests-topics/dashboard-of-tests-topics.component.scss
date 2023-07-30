@@ -1,0 +1,38 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$colorError: #ff0000;
+$colorText: #036;
+$basicFontSize: 16px;
+$basicFontSizeTitle: 20px;
+
+.wrapper {
+  a {
+    text-decoration: none;
+  }
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  background-color: $theBaseColorOfTheTemplate;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-left: 30px;
+  margin-right: 15px;
+}
+
+.block {
+  font-family: "Vollkorn", serif;
+  font-size: $basicFontSize;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background-color: $baseColorForTheButton;
+  border-radius: 20px;
+  color: $theBaseColorOfTheTemplate;
+  margin: 15px 20px 15px 20px;
+  padding: 15px 30px 15px 30px;
+}
+
+.name {
+  font-size: $basicFontSizeTitle;
+  text-decoration: none;
+  padding-bottom: 30px;
+}

@@ -1,0 +1,33 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$colorError: #ff0000;
+$colorText: #036;
+$basicFontSize: 16px;
+$basicFontSizeTitle: 20px;
+
+.wrapper {
+    width: 300px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $theBaseColorOfTheTemplate;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.text {
+    font-size: $basicFontSizeTitle;
+    font-weight: 600;
+    color: $colorText;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link {
+    margin-top: 30px;
+    padding-left: 20px;
+    background-color: #f5f5f5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

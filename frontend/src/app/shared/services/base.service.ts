@@ -1,7 +1,7 @@
 import {throwError as observableThrowError} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { BACKEND_HOST, BACKEND_PORT, BACKEND_PROTOCOL } from '../../../config';
+import { BACKEND_HOST, BACKEND_PORT, BACKEND_PROTOCOL } from 'src/config';
 
 export const SERVICE_URL = `${BACKEND_PROTOCOL}://${BACKEND_HOST}${BACKEND_PORT?':'+BACKEND_PORT:''}/api`; 
 const CONTENT_TYPE_HEADER_KEY = 'Content-Type';
