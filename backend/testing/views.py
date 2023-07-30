@@ -1,9 +1,7 @@
-from django.shortcuts import render
-
 from rest_framework import viewsets
 
 from testing.models import Test, Question, Answer, AssignedTest
-from testing.serializators import TestSerializer, QuestionSerializer, AnswerSerializer, AssignedTestSerializer
+from testing.serializers import TestSerializer, QuestionSerializer, AnswerSerializer, AssignedTestSerializer
 
 
 class TestViewSet(viewsets.ModelViewSet):
