@@ -4,7 +4,7 @@ from initers.base import Initer, IniterComposite
 from user_app.models import Student, User, Group, Teacher
 
 USERNAME = "admin"
-PASSWORD = 'ab123456'
+PASSWORD = 'pass1234'
 
 
 class SuperuserIniter(Initer):

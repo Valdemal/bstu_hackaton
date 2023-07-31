@@ -24,10 +24,10 @@ router.register(r'students', StudentViewSet, 'students')
 router.register(r'teachers', TeacherViewSet, 'teachers')
 router.register(r'group-subjects', GroupSubjectViewSet, 'group-subjects')
 
-router.register(r'tests', TestViewSet)
-router.register(r'questions', QuestionViewSet)
-router.register(r'answers', AnswerViewSet)
-router.register(r'assigned-tests', AssignedTestViewSet)
+router.register(r'tests', TestViewSet, 'tests')
+router.register(r'questions', QuestionViewSet, 'questions')
+router.register(r'answers', AnswerViewSet, 'answers')
+router.register(r'assigned-tests', AssignedTestViewSet, 'assigned-tests')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
