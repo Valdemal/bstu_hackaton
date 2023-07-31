@@ -1,0 +1,89 @@
+$theBaseColorOfTheTemplate: #ffffff;
+$baseColorForTheButton: #36c;
+$basicFontSize: 18px;
+$colorText: #036;
+
+.nav {
+  width: 100%;
+  height: 80px;
+  background-color: $theBaseColorOfTheTemplate;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.image_block {
+  img {
+    width: 200px;
+    height: 50px;
+  }
+  padding-left: 60px;
+}
+
+.navigation_link {
+  display: flex;
+  padding-right: 60px;
+  align-items: center;
+  align-self: center;
+}
+
+.btn_login {
+  a {
+    text-decoration: none;
+    color: #036;
+    font-weight: 600;
+    font-size: $basicFontSize;
+    letter-spacing: 1px;
+  }
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  transition: transform 0.5s;
+}
+
+.btn_login:hover {
+  transform: scale(1.05);
+}
+
+.btn_app {
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: $basicFontSize;
+    letter-spacing: 1px;
+  }
+  box-shadow: 0 2px 4px rgba($color: $baseColorForTheButton, $alpha: 0.2);
+  border-radius: 5px;
+  padding: 10px 60px 10px 60px;
+  margin-left: 15px;
+  background-color: $baseColorForTheButton;
+  transition: transform 0.5s;
+}
+
+.btn_app:hover {
+  transform: scale(1.05);
+}
+
+.name {
+  p {
+    color: $colorText;
+    font-weight: 600;
+    font-size: $basicFontSize;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  padding-left: 15px;
+}
+
+.wrraper {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    color: #808080;
+    font-weight: 600;
+    font-size: $basicFontSize;
+    letter-spacing: 1px;
+}
