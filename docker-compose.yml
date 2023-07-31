@@ -35,7 +35,7 @@ services:
     container_name: hackaton-nginx
     build: ./nginx
     ports:
-      - "80:80"
+      - "81:80"
     volumes:
       - static:/usr/src/static
       - media:/usr/src/media
