@@ -1,7 +1,10 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 from testing.models import Test, Question, Answer, AssignedTest
 from testing.serializers import TestSerializer, QuestionSerializer, AnswerSerializer, AssignedTestSerializer
+
+from .filters import AnswerFilter, AssignedTestFilter
 
 
 class TestViewSet(viewsets.ModelViewSet):
@@ -26,6 +29,8 @@ class QuestionViewSet(viewsets.ModelViewSet):
 
 class AnswerViewSet(viewsets.ModelViewSet):
     serializer_class = AnswerSerializer
+    filter_backends = DjangoFilterBackend,
+    filterset_class = AnswerFilter
 
     def get_queryset(self):
         queryset = Answer.objects.all()
@@ -43,6 +48,8 @@ class AnswerViewSet(viewsets.ModelViewSet):
 
 class AssignedTestViewSet(viewsets.ModelViewSet):
     serializer_class = AssignedTestSerializer
+    filter_backends = DjangoFilterBackend,
+    filterset_class = AssignedTestFilter
 
     def get_queryset(self):
         queryset = AssignedTest.objects.all()

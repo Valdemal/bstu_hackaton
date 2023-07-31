@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_spectacular',
     'drf_spectacular_sidecar',
+    'django_filters',
 
     # Внутренние приложения
     'dicts',
@@ -165,7 +166,10 @@ DJOSER = {
     'SERIALIZERS': {
         'user': 'user_app.serializers.UserSerializer',
         'current_user': 'user_app.serializers.UserSerializer',
-    }
+    },
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    )
 }
 
 AUTH_USER_MODEL = 'user_app.User'
