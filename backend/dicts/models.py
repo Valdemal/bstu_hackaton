@@ -34,8 +34,8 @@ class Speciality(models.Model):
 
 
 class Competence(models.Model):
-    name = models.CharField("Наименование", max_length=255)
-    category_name = models.CharField("Наименование категории", max_length=255)
+    name = models.CharField("Наименование", max_length=500)
+    category_name = models.CharField("Наименование категории", max_length=500)
     code = models.CharField('Код', max_length=50)
     level = models.CharField("Уровень образования", max_length=20, choices=EducationLevel.choices)
 
