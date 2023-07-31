@@ -22,7 +22,7 @@ class TestIniter(Initer):
                     available_indicators, len(available_indicators)
                 )
 
-                test = Test.objects.create(name=name, teacher=teacher, subjects=subject)
+                test = Test.objects.create(name=name, teacher=teacher, subject=subject)
 
                 for indicator in indicators:
                     test.indicators.add(indicator)
@@ -35,9 +35,11 @@ class QuestionIniter(Initer):
     def start(cls):
         for test in Test.objects.all():
             for i in range(cls.QUESTIONS_COUNT):
-                text = "Пример вопроса №" + str(i+1) + " к тесту "
+                text = "Пример вопроса №" + str(i + 1) + " к тесту "
                 correct_answer = "Пример правильного ответа на " + text
-                Question.objects.create(test=test, correct_answer=correct_answer, text=text)
+                Question.objects.create(
+                    test=test, correct_answer=correct_answer, text=text, type=random.choice(Question.Types.values)
+                )
 
 
 class AssignedTestIniter(Initer):
@@ -57,14 +59,14 @@ class AnswerIniter(Initer):
         for assigned_test in AssignedTest.objects.all():
             questions = Question.objects.filter(test=assigned_test.test)
             for question in questions:
-                is_correct_answer = bool(random.randint(0, 1))\
+                is_correct_answer = bool(random.randint(0, 1))
 
                 if is_correct_answer:
                     answer_text = question.correct_answer
                 else:
                     answer_text = f"Неправильный ответ на вопрос {question}"
 
-                Answer.objects.create(question=question, answer=answer_text)
+                Answer.objects.create(question=question, answer=answer_text, assigned_test=assigned_test)
 
 
 class MainIniter(IniterComposite):

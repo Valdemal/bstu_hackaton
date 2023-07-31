@@ -7,7 +7,7 @@ from user_app.models import Teacher, Student
 class Test(models.Model):
     name = models.CharField('Название теста', max_length=255)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, verbose_name="Преподаватель")
-    subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name="Предмет")
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name="Предмет")
     indicators = models.ManyToManyField(Indicator, verbose_name='Индикаторы')
     students = models.ManyToManyField(
         Student,
@@ -24,9 +24,18 @@ class Test(models.Model):
 
 
 class Question(models.Model):
-    test = models.ForeignKey(Test, on_delete=models.CASCADE)
-    text = models.CharField(max_length=500)
-    correct_answer = models.JSONField(default=dict)
+    class Types(models.TextChoices):
+        SINGLE_CHOICE = "Одиночный выбор"
+        MULTIPLE_CHOICE = "Множественный выбор"
+        MATCHING = "Установление соответствия"
+        SEQUENCING = "Установления последовательности"
+        ADDITION = "Дополнение"
+        FREE_PRESENTATION = "Свободное изложение"
+
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name="Тест")
+    text = models.CharField(max_length=500, verbose_name="Текст вопроса")
+    type = models.CharField(max_length=100, choices=Types.choices, verbose_name="Тип вопроса")
+    correct_answer = models.JSONField(default=dict, verbose_name="Правильный ответ")
 
     def __str__(self):
         return f"{self.text}({self.test})"
@@ -37,10 +46,10 @@ class Question(models.Model):
 
 
 class AssignedTest(models.Model):
-    test = models.ForeignKey(Test, on_delete=models.CASCADE)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    start_time = models.DateTimeField(auto_now_add=True)
-    end_time = models.DateTimeField()
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name="Тест")
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name="Студент")
+    start_time = models.DateTimeField(verbose_name="Время начала теста", null=True, blank=True)
+    end_time = models.DateTimeField(verbose_name="Время окончания теста")
 
     def __str__(self):
         return f"{self.student} -- {self.test}"
@@ -51,9 +60,11 @@ class AssignedTest(models.Model):
 
 
 class Answer(models.Model):
-    assigned_test = models.ForeignKey(AssignedTest, on_delete=models.CASCADE, related_name='answers')
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.JSONField(default=dict)
+    assigned_test = models.ForeignKey(
+        AssignedTest, on_delete=models.CASCADE, related_name='answers', verbose_name="Назначенный тест"
+    )
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Вопрос")
+    answer = models.JSONField(default=dict, verbose_name="Текст ответа")
 
     @property
     def is_correct(self) -> bool:
